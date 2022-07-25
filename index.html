@@ -1,20 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Rapid API made real</title>
-    <meta name="description" content="Our first page" />
-    <meta name="keywords" content="html tutorial template" />
+    <!---- <link rel="stylesheet" href="style.css" />-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Api in realworld</title>
   </head>
   <body>
-    <p id="outPut">Content goes here.</p>
+    <!-- Here a loader is created which 
+             loads till response comes -->
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status" id="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <h1>News From All Over The Globe</h1>
+    <!-- table for showing data -->
+    <table id="outPut"></table>
     <script>
-      let response = fetch("http://localhost:8000/news");
-      function fetschMyApi(url) {
-        const response = "await";
-        fetch(url);
-        var data = "await";
-        response.json();
+      // api url
+      const api_url = "http://localhost:8000/news";
+
+      // Defining async function
+      async function getapi(url) {
+        // Storing response
+        const response = await fetch(url);
+
+        // Storing data in form of JSON
+        var data = await response.json();
+        // console.log(data);
+        // console.log(response);
+        if (response) {
+          hideloader();
+        }
+        show(data);
       }
+      // Calling that async function
+      getapi(api_url);
+
+      // Function to hide the loader
+      function hideloader() {
+        document.getElementById("loading").style.display = "none";
+      }
+      // Function to define innerHTML for HTML table
+      function show(data) {
+        let tab = `<tr>
+		<th>Title</th>
+		<th>Url</th>
+		<th>Source</th>
+		
+		</tr>`;
+
+        // Loop to access all rows
+        for (let r of data.list) {
+          tab += `<tr>
+	<td>${r.title} </td>
+	<td>${r.url}</td>
+	<td>${r.source}</td>
+		
+</tr>`;
+        }
+        // Setting innerHTML as tab variable
+        document.getElementById("outPut").innerHTML = tab;
+      }
+
+      /*function fetchMyApi() {
+        const response = "works till this";
+        fetch(apiUrl);
+        var data = "await";
+        document.getElementById("outPut").innerHTML = "hyhuuuuu";
+        console.log(apiUrl);
+        console.log(response);
+        return apiUrl;
+      }*/
     </script>
   </body>
 </html>
