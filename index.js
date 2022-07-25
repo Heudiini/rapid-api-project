@@ -127,5 +127,5 @@ app.get("/news/:newspaperId", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
-
+document.getElementById("#arrayMessage").innerHTML = "You see me";
 app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
