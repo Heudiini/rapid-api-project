@@ -71,7 +71,7 @@ const newspapers = [
     base: "",
   },
 ];
-document.getElementById("outPut").innerHTML = 5 + 6;
+
 const articles = [];
 
 newspapers.forEach((newspaper) => {
