@@ -1,5 +1,9 @@
 # rapid-api-project
-# climate-change-live-api made with Anya Kubow tutorial
+1. climate-change-live-api made with Anya Kubow tutorial,
+2. I myself building HTML as the result of this API 
+
+
+
 A Demo to show how to build your own API and host in on RapidAPI
 
 ## To run this project
