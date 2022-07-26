@@ -4,75 +4,51 @@
     <!---- <link rel="stylesheet" href="style.css" />-->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!---- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
     <title>My Api in realworld</title>
   </head>
   <body>
-    <!-- Here a loader is created which 
-             loads till response comes -->
-    <div class="d-flex justify-content-center">
-      <div class="spinner-border" role="status" id="loading">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
     <h1>News From All Over The Globe</h1>
+    <div class="demo">Demo:</div>
     <!-- table for showing data -->
     <table id="outPut"></table>
+
     <script>
-      // api url
-      const api_url = "http://localhost:8000/news";
+      const url = "http://localhost:8000/news";
 
-      // Defining async function
-      async function getapi(url) {
-        // Storing response
-        const response = await fetch(url);
+      axios
+        .get(url)
+        .then(function (response) {
+          // handle success
 
-        // Storing data in form of JSON
-        var data = await response.json();
-        // console.log(data);
-        // console.log(response);
-        if (response) {
-          hideloader();
-        }
-        show(data);
+          console.log(response);
+          /* var arr = response;
+          for (var i = 0; i < arr.length; i++) {
+            document.write("<br><br>array index: " + i);
+            var obj = arr[i];
+            for (var key in obj) {
+              var value = obj[key];
+              document.write("<br> - " + key + ": " + value);
+            }
+          }*/
+        })
+        .catch(function (error) {
+          error();
+        })
+        .then(function () {
+          console.log("ended here..");
+        });
+      function error() {
+        console.log("cannot show for some reason..");
       }
-      // Calling that async function
-      getapi(api_url);
-
-      // Function to hide the loader
-      function hideloader() {
-        document.getElementById("loading").style.display = "none";
-      }
-      // Function to define innerHTML for HTML table
-      function show(data) {
-        let tab = `<tr>
-		<th>Title</th>
-		<th>Url</th>
-		<th>Source</th>
-		
-		</tr>`;
-
-        // Loop to access all rows
-        for (let r of data.list) {
-          tab += `<tr>
-	<td>${r.title} </td>
-	<td>${r.url}</td>
-	<td>${r.source}</td>
-		
-</tr>`;
-        }
-        // Setting innerHTML as tab variable
-        document.getElementById("outPut").innerHTML = tab;
-      }
-
-      /*function fetchMyApi() {
-        const response = "works till this";
-        fetch(apiUrl);
-        var data = "await";
-        document.getElementById("outPut").innerHTML = "hyhuuuuu";
-        console.log(apiUrl);
-        console.log(response);
-        return apiUrl;
-      }*/
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </body>
 </html>
