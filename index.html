@@ -12,58 +12,56 @@
     ></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!---- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
-    <title>My Api in realworld</title>
+    <title>My Api in real world</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <style>
-      body {
-        text-align: center;
-      }
-      #container {
-        text-align: left;
-        padding: 20px;
-      }
-      .links {
-        color: darkblue;
-      }
-      #source {
-        color: red;
-      }
-    </style>
-    <h1>Climate based topics From All Over The Globe</h1>
-    <div class="demo">Sourced by my own API! You're welcome😊</div>
-    <!-- table for showing data -->
-    <table id="container"></table>
+ 
+      <header class="header">
+        <h1>Climate based topics From All Over The Globe</h1>
+        <div class="demo">Sourced by my own API! You're welcome😊</div>
+        <main> 
 
-    <script>
-      const url = "http://localhost:8000/news";
+        </header>
+      <!--  for showing js data -->
+      <div id="container"></div>
 
-      axios.get(url).then(function (response) {
-        console.log(response);
+      <script>
+        const url = "http://localhost:8000/news";
 
-        var x = response.data;
+        axios.get(url).then(function (response) {
+          console.log(response);
 
-        var allNews = x
-          .map(function (item) {
-            //console.log(item);
+          var x = response.data;
 
-            for (var topic in item)
-              return (
-                "<br> <br>" +
-                item[topic] +
-                "<br><div >  " +
-                "  </div><br>" +
-                '<a href="' +
-                item.url +
-                '">News link on ' +
-                item.source +
-                "</a>"
-              );
-          })
-          .join("<br> ");
-        document.getElementById("container").innerHTML = allNews;
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          var allNews = x
+            .map(function (item) {
+              //console.log(item);
+
+              for (var topic in item)
+                return (
+                  "<br> <br><h4>" +
+                  item[topic] +
+                  "</h4>  " +
+                  '<a href="' +
+                  item.url +
+                  '">News link on ' +
+                  item.source +
+                  "</a>"
+                );
+            })
+            .join("<br> ");
+          document.getElementById("container").innerHTML = allNews;
+        });
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </main>
+    <footer>
+      © 2022 Coded by <a href="https://heudiinis.netlify.app/">Heudiini </a><br /><a
+        href="https://github.com/Heudiini/rapid-api-project"
+      >
+        Source Code in Github</a
+      >
+    </footer>
   </body>
 </html>
