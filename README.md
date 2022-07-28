@@ -1,6 +1,8 @@
 # rapid-api-project
 
 ## live in: https://heudiini.github.io/rapid-api-project/
+## live updating api in Heroku:https://heudiinisapi.herokuapp.com/
+
 1. climate-change-live-api made with Anya Kubow tutorial,
 2. I myself building HTML as the result of this API 
 
