@@ -16,15 +16,22 @@
   </head>
   <body>
     <style>
+      body {
+        text-align: center;
+      }
+      #container {
+        text-align: left;
+        padding: 20px;
+      }
       .links {
         color: darkblue;
       }
-      .source {
+      #source {
         color: red;
       }
     </style>
     <h1>Climate based topics From All Over The Globe</h1>
-    <div class="demo">Sourced bymy own API! You're welcome😊</div>
+    <div class="demo">Sourced by my own API! You're welcome😊</div>
     <!-- table for showing data -->
     <table id="container"></table>
 
@@ -32,11 +39,11 @@
       const url = "http://localhost:8000/news";
 
       axios.get(url).then(function (response) {
-        //console.log(response);
+        console.log(response);
 
         var x = response.data;
 
-        var str = x
+        var allNews = x
           .map(function (item) {
             //console.log(item);
 
@@ -44,15 +51,17 @@
               return (
                 "<br> <br>" +
                 item[topic] +
-                "<br><div > " +
-                item.source +
-                '  </div><br><a class="links" href="' +
+                "<br><div >  " +
+                "  </div><br>" +
+                '<a href="' +
                 item.url +
-                '"</a>'
+                '">News link on ' +
+                item.source +
+                "</a>"
               );
           })
-          .join(" ");
-        document.getElementById("container").innerHTML = str;
+          .join("<br> ");
+        document.getElementById("container").innerHTML = allNews;
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
