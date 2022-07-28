@@ -1,9 +1,9 @@
-//const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const app = express();
-// this was needed for unblocking the url get
+//this was needed for unblocking the url get
 let cors = require("cors");
 app.use(cors());
 
@@ -131,4 +131,4 @@ app.get("/news/:newspaperId", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-//app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
+app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
