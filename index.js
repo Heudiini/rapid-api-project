@@ -4,8 +4,8 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const app = express();
 // this was needed for unblocking the url get
-let cors = require("cors");
-app.use(cors());
+//let cors = require("cors");
+//app.use(cors());
 
 const newspapers = [
   {
