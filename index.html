@@ -15,39 +15,45 @@
     <title>My Api in realworld</title>
   </head>
   <body>
-    <h1>News From All Over The Globe</h1>
-    <div class="demo">Demo:</div>
+    <style>
+      .links {
+        color: darkblue;
+      }
+      .source {
+        color: red;
+      }
+    </style>
+    <h1>Climate based topics From All Over The Globe</h1>
+    <div class="demo">Sourced bymy own API! You're welcome😊</div>
     <!-- table for showing data -->
-    <table id="outPut"></table>
+    <table id="container"></table>
 
     <script>
       const url = "http://localhost:8000/news";
 
-      axios
-        .get(url)
-        .then(function (response) {
-          // handle success
+      axios.get(url).then(function (response) {
+        //console.log(response);
 
-          console.log(response);
-          /* var arr = response;
-          for (var i = 0; i < arr.length; i++) {
-            document.write("<br><br>array index: " + i);
-            var obj = arr[i];
-            for (var key in obj) {
-              var value = obj[key];
-              document.write("<br> - " + key + ": " + value);
-            }
-          }*/
-        })
-        .catch(function (error) {
-          error();
-        })
-        .then(function () {
-          console.log("ended here..");
-        });
-      function error() {
-        console.log("cannot show for some reason..");
-      }
+        var x = response.data;
+
+        var str = x
+          .map(function (item) {
+            //console.log(item);
+
+            for (var topic in item)
+              return (
+                "<br> <br>" +
+                item[topic] +
+                "<br><div > " +
+                item.source +
+                '  </div><br><a class="links" href="' +
+                item.url +
+                '"</a>'
+              );
+          })
+          .join(" ");
+        document.getElementById("container").innerHTML = str;
+      });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </body>
