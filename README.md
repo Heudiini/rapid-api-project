@@ -2,11 +2,9 @@
 Check it live: https://heudiini.github.io/rapid-api-project/
 Api on Heroku: https://heudiinisapi.herokuapp.com/news
 
-1. climate-change-live-api made with Anya Kubow tutorial,
-*heroku
-*rapid-api
+1. Updating-climate-change-live-api from all over the globe
 
-3. I myself building HTML as the result of this API
+2. Also building HTML as the result of this API
 
 A Demo to show how to build your own API and host in on RapidAPI
 
