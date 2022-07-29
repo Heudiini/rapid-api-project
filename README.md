@@ -1,4 +1,5 @@
 # rapid-api-project
+Check it live: https://heudiini.github.io/rapid-api-project/
 
 1. climate-change-live-api made with Anya Kubow tutorial,
 2. I myself building HTML as the result of this API
