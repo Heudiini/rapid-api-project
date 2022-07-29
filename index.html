@@ -38,7 +38,7 @@
 
           var allNews = x
             .map(function (item) {
-              //console.log(item);
+              console.log(item);
 
               for (var topic in item)
                 return (
@@ -47,7 +47,7 @@
                   "</h4>  " +
                   '<a href="' +
                   item.url +
-                  '">News link on ' +
+                  '">News link' +
                   item.source +
                   "</a>"
                 );
