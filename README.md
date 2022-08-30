@@ -1,5 +1,5 @@
 # rapid-api-project
-Check it live: https://heudiini.github.io/rapid-api-project/
+Check it live but let it load for a moment it still lacks loading page: https://heudiini.github.io/rapid-api-project/
 Api on Heroku: https://heudiinisapi.herokuapp.com/news
 
 1. Updating-climate-change-live-api from all over the globe
