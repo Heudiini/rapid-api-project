@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script></script>
-</body>
+  <head>
+    <!---- <link rel="stylesheet" href="style.css" />-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!---- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
+    <title>My Api in real world</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+ 
+      <header class="header">
+        <h1>Climate based topics From All Over The Globe</h1>
+        <div class="demo">Sourced by my own API!😊
+
+        </div>
+        <main> 
+
+        </header>
+      <!--  for showing js data -->
+      <div id="container"></div>
+
+      <script>
+        const url = "https://heudiinisapi.herokuapp.com/news";
+
+        axios.get(url).then(function (response) {
+          console.log(response);
+
+          var x = response.data;
+
+          var allNews = x
+            .map(function (item) {
+              console.log(item);
+
+              for (var topic in item)
+                return (
+                  "<br> <br><h4>" +
+                  item[topic] +
+                  "</h4>  " +
+                  '<a href="' +
+                  item.url +
+                  '">News link on: ' +
+                  item.source +
+                  "</a>"
+                );
+            })
+            .join("<br> ");
+          document.getElementById("container").innerHTML = allNews;
+        });
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </main>
+    <footer>
+      © 2022 Coded by <a href="https://heudiinis.netlify.app/">Heudiini </a><br /><a
+        href="https://github.com/Heudiini/rapid-api-project"
+      >
+        Source Code in Github</a
+      >
+    </footer>
+  </body>
 </html>
